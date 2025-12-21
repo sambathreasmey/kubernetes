@@ -1,15 +1,16 @@
-### Before to do that make sure you're ready for :
+######################## Before to do that make sure you're ready for ########################
 - build docker image and push to your Docker Hub
 - you have Docker Desktop and enable Kubernetes Cluster in your Docker Desktop
+##############################################################################################
 
 1.kubectl apply deployment and service
 - kubectl apply -f deployment.yaml
 - kubectl apply -f service.yaml
-- kubectl get deployments (list deployment)
-- kubectl get services (list service)
+- kubectl get deployments # list deployment
+- kubectl get services # list service
 
 + scale deployment
-- kubectl scale deployment notification-deployment --replicas=5
+- kubectl scale deployment notification-deployment --replicas=5 # scale to 5 pods
 
 2.kubectl apply ingress
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
@@ -22,12 +23,12 @@
 
 4.apply configMap
 - kubectl apply -f configMap.yaml
-- kubectl describe configMap notification-config ( verify configMap )
+- kubectl describe configMap notification-config # verify configMap
 - add mount into deployment
   spec:
       containers:
         - name: notification
-          image: sambathreasmey/notification:1.0
+          image: sambathreasmey/notification:1.0 # pull image from docker hub repository
           ports:
             - containerPort: 8080
           volumeMounts:
