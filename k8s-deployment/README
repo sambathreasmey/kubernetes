@@ -46,3 +46,9 @@
   metadata:
   annotations:
     reloader.stakater.com/auto: "true" # Watches all referenced ConfigMaps
+
+5.delete resources
+- kubectl delete deployment notification-deployment
+- kubectl delete service notification-service
+- kubectl delete configmap notification-config
+- kubectl delete ingress notification-ingress
