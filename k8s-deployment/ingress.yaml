@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: notification-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "dev.sambathreasmey.com"
+      http:
+        paths:
+          - pathType: Prefix
+            path: /api
+            backend:
+              service:
+                name: notification-service
+                port:
+                  number: 8080

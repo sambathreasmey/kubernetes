@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: notification-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: notification
+  template:
+    metadata:
+      annotations:
+        reloader.stakater.com/auto: "true"
+      labels:
+        app: notification
+    spec:
+      containers:
+        - name: notification
+          image: sambathreasmey/notification:1.0
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: notification-config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: notification-config
+          configMap:
+            name: notification-config

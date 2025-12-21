@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: notification-service
+spec:
+  selector:
+    app: notification  # Match Pods with the label "app: notification"
+  ports:
+    - protocol: TCP
+      port: 8080             # Port exposed by the Service
+      targetPort: 8080     # Port on the container (the app inside the Pod)
+  type: ClusterIP         # The default type, which exposes the service only inside the cluster.

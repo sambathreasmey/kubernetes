@@ -1,0 +1,15 @@
+1.kubectl apply deployment and service
+- kubectl apply -f deployment.yaml
+- kubectl apply -f service.yaml
+
+2.kubectl apply ingress
+- kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+- kubectl apply -f ingress.yaml
+- Open Notepad as Administrator → Click File → Open → C:\Windows\System32\drivers\etc → edit hosts file → 127.0.0.1 dev.sambathreasmey.local → save (if it cached try in cmd "ipconfig /flushdns")
+
+3.testing
+- http://dev.sambathreasmey.com/api/notification
+
+
+4.apply configMap
+- kubectl apply -f configMap.yaml
