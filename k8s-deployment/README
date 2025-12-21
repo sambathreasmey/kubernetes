@@ -1,6 +1,8 @@
 1.kubectl apply deployment and service
 - kubectl apply -f deployment.yaml
 - kubectl apply -f service.yaml
+- kubectl get deployments (list deployment)
+- kubectl get services (list service)
 
 2.kubectl apply ingress
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
@@ -13,3 +15,27 @@
 
 4.apply configMap
 - kubectl apply -f configMap.yaml
+- kubectl describe configMap notification-config ( verify configMap )
+- add mount into deployment
+  spec:
+      containers:
+        - name: notification
+          image: sambathreasmey/notification:1.0
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: notification-config
+              mountPath: /app/config
+              readOnly: true
+      volumes:
+        - name: notification-config
+          configMap:
+            name: notification-config
+- kubectl rollout restart deployment notification-deployment ( to restart deployment )
+
++ apply reloader
+- kubectl apply -f https://raw.githubusercontent.com/stakater/Reloader/master/deployments/kubernetes/reloader.yaml
+- add annotation into deployment
+  metadata:
+  annotations:
+    reloader.stakater.com/auto: "true" # Watches all referenced ConfigMaps
