@@ -8,6 +8,9 @@
 - kubectl get deployments (list deployment)
 - kubectl get services (list service)
 
++ scale deployment
+- kubectl scale deployment notification-deployment --replicas=5
+
 2.kubectl apply ingress
 - kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 - kubectl apply -f ingress.yaml
@@ -37,7 +40,7 @@
             name: notification-config
 - kubectl rollout restart deployment notification-deployment ( to restart deployment )
 
-+ apply reloader
++ apply Reloader
 - kubectl apply -f https://raw.githubusercontent.com/stakater/Reloader/master/deployments/kubernetes/reloader.yaml
 - add annotation into deployment
   metadata:
