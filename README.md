@@ -140,3 +140,21 @@ kubectl delete ingress notification-ingress
 - ConfigMaps should be updated carefully; use Reloader for automatic deployment updates.
 - Scale deployments based on your cluster capacity and load requirements.
 
+Thank you 🙏🏻
+
+## **Sambath Reasmey**
+*Junior Software Engineer | Backend & API Developer*
+
+- 💡 **Project Initiator & Core Contributor** – Led the project from inception and remains a primary contributor  
+- 🧱 **System Architecture & Technical Direction** – Designed the overall system structure and guided technical decisions  
+- ☁️ **Infrastructure & Deployment** – Hands-on experience with OpenShift and containerized environments  
+- 🤖 **Automation** – Built automation for build, deployment, and operational workflows  
+- 🔌 **Backend APIs** – Developed and maintained scalable backend service APIs  
+- 📊 **Observability & Monitoring** – Implemented monitoring and observability to ensure reliability and performance  
+- 🚗 **Data Analysis** – Worked with driving pattern data and related system logic  
+- 🛠️ **Continuous Improvement** – Actively maintains, optimizes, and evolves the project
+
+GitHub: [@sambathreasmey](https://github.com/sambathreasmey) |
+GitLab: [@sambathreasmey](https://gitlab.com/reasmeysambath) |
+Linkedin: [@sambathreasmey](https://www.linkedin.com/in/reasmey-sambath-4b7658350) |
+Telegram: [@sambathreasmey](https://t.me/sambathreasmey)
