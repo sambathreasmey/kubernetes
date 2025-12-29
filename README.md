@@ -4,6 +4,157 @@ This guide explains how to deploy, manage, and test the **Notification Service**
 
 ---
 
+## What is Kubernetes?
+
+**Kubernetes (K8s)** is an open-source container orchestration platform designed to automate the deployment, scaling, and management of containerized applications.
+
+Instead of running containers manually, Kubernetes:
+- Manages container lifecycles
+- Restarts failed services
+- Scales applications automatically
+- Handles networking and configuration
+
+Kubernetes is the backbone of most **cloud-native and production-grade systems**.
+
+---
+
+## Why Use Kubernetes?
+
+Kubernetes provides powerful capabilities that make applications reliable and scalable:
+
+### 🔁 High Availability
+- Automatically restarts failed containers
+- Ensures services stay online
+
+### 📈 Scalability
+- Scale applications horizontally by increasing replicas
+- Handle traffic spikes efficiently
+
+### 🚀 Automated Deployment & Rollback
+- Safe rolling updates
+- Instant rollback if a deployment fails
+
+### ⚙️ Configuration Management
+- Externalize configuration using ConfigMaps
+- Update configs without rebuilding Docker images
+
+### 🌐 Networking & Load Balancing
+- Built-in service discovery
+- Traffic routing via Services and Ingress
+
+### ☁️ Platform Independent
+- Runs on Docker Desktop, AWS, GCP, Azure, OpenShift, etc.
+
+---
+
+## Kubernetes Core Concepts
+
+Below are the main Kubernetes components used in this project.
+
+---
+
+### 1. Pod
+A **Pod** is the smallest deployable unit in Kubernetes.
+
+- Contains one or more containers
+- Shares networking and storage
+- Ephemeral (can be recreated anytime)
+
+> Pods are usually managed by Deployments, not created directly.
+
+---
+
+### 2. Deployment
+A **Deployment** manages Pods and ensures the desired number of replicas are running.
+
+Responsibilities:
+- Create and manage Pods
+- Handle rolling updates
+- Restart Pods automatically
+
+In this project:
+- `notification-deployment` manages the Notification Service Pods
+
+---
+
+### 3. ReplicaSet
+A **ReplicaSet** ensures a specific number of Pods are always running.
+
+- Automatically created by Deployments
+- Not managed directly by users
+
+---
+
+### 4. Service
+A **Service** exposes Pods through a stable network endpoint.
+
+Why Services are needed:
+- Pod IPs change on restart
+- Services provide consistent access
+
+Service types:
+- ClusterIP (default)
+- NodePort
+- LoadBalancer
+
+---
+
+### 5. Ingress
+An **Ingress** exposes HTTP/HTTPS routes from outside the cluster to Services.
+
+Benefits:
+- Single entry point
+- Path-based routing
+- TLS (HTTPS) support
+
+---
+
+### 6. Ingress Controller (NGINX)
+The **Ingress Controller** processes Ingress rules and routes traffic.
+
+In this project:
+- NGINX Ingress Controller is used
+- Routes traffic to the Notification Service
+
+---
+
+### 7. ConfigMap
+A **ConfigMap** stores non-sensitive configuration data.
+
+Benefits:
+- Decouple config from code
+- Avoid rebuilding images
+- Centralized config management
+
+---
+
+### 8. Volumes
+**Volumes** provide shared storage for containers.
+
+In this project:
+- ConfigMap is mounted as a volume
+- Application reads config from files
+
+---
+
+### 9. Scaling
+Kubernetes supports horizontal scaling:
+
+```bash
+kubectl scale deployment notification-deployment --replicas=5
+```
+
+Benefits:
+- Increased capacity
+- Improved reliability
+
+### 10. Reloader (Optional)
+**Reloader** restarts Pods automatically when ConfigMaps change.
+
+Benefits:
+- No manual restarts
+- Immediate config updates
+
 ## Prerequisites
 
 Before starting, ensure you have:
